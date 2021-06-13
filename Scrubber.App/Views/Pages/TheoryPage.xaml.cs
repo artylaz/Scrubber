@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Scrubber.App
+namespace Scrubber.App.Views.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для TheoryPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TheoryPage : Page
     {
-        public MainWindow()
+        public TheoryPage()
         {
             InitializeComponent();
         }
