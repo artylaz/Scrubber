@@ -72,7 +72,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pages\ResultsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\TheoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\СalculationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,9 +95,18 @@
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
     <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
+    <Compile Include="ViewModels\PagesViewModel\ResultsPageViewModel.cs" />
+    <Compile Include="ViewModels\PagesViewModel\TheoryPageViewModel.cs" />
+    <Compile Include="ViewModels\PagesViewModel\СalculationPageViewModel.cs" />
     <Compile Include="ViewModels\WindowsViewModel\MainWindowViewModel.cs" />
+    <Compile Include="Views\Pages\ResultsPage.xaml.cs">
+      <DependentUpon>ResultsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\TheoryPage.xaml.cs">
       <DependentUpon>TheoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\СalculationPage.xaml.cs">
+      <DependentUpon>СalculationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -131,6 +148,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Scrubber.MatLibrary\Scrubber.MatLibrary.csproj">
+      <Project>{f1e7e6fc-4298-4d3e-8e44-c2736ba2952a}</Project>
+      <Name>Scrubber.MatLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
