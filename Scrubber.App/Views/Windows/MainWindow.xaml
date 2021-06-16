@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Scrubber.App.ViewModels.WindowsViewModel"
-        xmlns:local="clr-namespace:Scrubber.App"
         xmlns:ico="http://schemas.fontawesome.com/icons/"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
@@ -23,8 +22,7 @@
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseLeftButtonDown">
-            <i:InvokeCommandAction
-                Command="{Binding DragMoveCommand}"/>
+            <i:InvokeCommandAction Command="{Binding DragMoveCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
@@ -44,9 +42,6 @@
             </Grid.Background>
 
             <Grid Grid.Row="0" Height="100" Width="100" Opacity="0.8">
-                <Grid.Background>
-                    <SolidColorBrush Color="#FF365952" Opacity="0.9"/>
-                </Grid.Background>
 
                 <Image Source="/Resources/Icon.png"  Width="70" Height="70"/>
             </Grid>

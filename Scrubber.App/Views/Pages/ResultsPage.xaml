@@ -41,6 +41,7 @@
                 <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
                 <Setter Property="Margin" Value="20 0"/>
                 <Setter Property="BorderThickness" Value="3"/>
+                <Setter Property="IsReadOnly" Value="True"/>
             </Style>
         </Grid.Resources>
 
@@ -54,7 +55,7 @@
 
             <Grid >
                 <TextBlock Text="Эквивалентный диаметр скруббера, м" />
-                <TextBox Text="{Binding EkvDiamCk}" Width="90" HorizontalAlignment="Right"/>
+                <TextBox Text="{Binding EkvDiamCk}"  Width="90" HorizontalAlignment="Right"/>
             </Grid>
 
             <Grid >
@@ -101,18 +102,18 @@
                            />
                 <TextBox Text="{Binding SkorRes}" Width="90" HorizontalAlignment="Right"/>
             </Grid>
-            
+
         </StackPanel>
 
         <Grid Grid.Column="1">
-            <ListBox ItemsSource="{Binding Dots}" SelectedItem="{Binding SelectedItem}">
+            <ListBox ItemsSource="{Binding Results}" SelectedItem="{Binding SelectedResultsItem}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-
+                        <TextBlock Text="{Binding NameResult}" FontFamily="Times New Roman" FontSize="18" TextWrapping="Wrap"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
-        
+
     </Grid>
 </Page>

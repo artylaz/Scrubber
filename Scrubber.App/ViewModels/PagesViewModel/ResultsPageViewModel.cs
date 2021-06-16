@@ -1,14 +1,13 @@
 ﻿using Scrubber.App.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using System.Windows.Controls;
 
 namespace Scrubber.App.ViewModels.PagesViewModel
 {
     class ResultsPageViewModel : ViewModel
     {
+        public Page resultsPage;
+
         private double _EkvDiamCk;
         private double _AktVisotaCk;
         private double _RasstRes;
@@ -29,6 +28,33 @@ namespace Scrubber.App.ViewModels.PagesViewModel
         public double ChisRyad { get => _ChisRyad; set => Set(ref _ChisRyad, value); }
         public double SkorRes { get => _SkorRes; set => Set(ref _SkorRes, value); }
 
+        private string _NameResult;
+        public string NameResult { get => _NameResult; set => Set(ref _NameResult, value); }
+        public ObservableCollection<ResultsPageViewModel> Results { get; set; }
 
+        private ResultsPageViewModel _SelectedResultsItem;
+        public ResultsPageViewModel SelectedResultsItem 
+        { 
+            get => _SelectedResultsItem;
+            set
+            {
+                Set(ref _SelectedResultsItem, value);
+                EkvDiamCk = SelectedResultsItem.EkvDiamCk;
+                AktVisotaCk = SelectedResultsItem.AktVisotaCk;
+                RasstRes = SelectedResultsItem.RasstRes;
+                RasstRyadRes = SelectedResultsItem.RasstRyadRes;
+                EnergStep = SelectedResultsItem.EnergStep;
+                RasPlotRes = SelectedResultsItem.RasPlotRes;
+                RasStepRes = SelectedResultsItem.RasStepRes;
+                ChisRyad = SelectedResultsItem.ChisRyad;
+                SkorRes = SelectedResultsItem.SkorRes;
+                Results = SelectedResultsItem.Results;
+            }
+        }
+
+        public ResultsPageViewModel()
+        {
+            Results = new ObservableCollection<ResultsPageViewModel>();
+        }
     }
 }

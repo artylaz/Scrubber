@@ -1,6 +1,8 @@
 ﻿using Scrubber.App.Infrastructure.Commands;
 using Scrubber.App.ViewModels.Base;
 using Scrubber.App.ViewModels.WindowsViewModel;
+using Scrubber.App.Views.Pages;
+using Scrubber.App.Views.Windows;
 using Scrubber.MatLibrary;
 using System;
 using System.Collections.Generic;
@@ -14,19 +16,22 @@ namespace Scrubber.App.ViewModels.PagesViewModel
         public MainWindowViewModel mainWindowVM;
         public Page resultsPage;
         public ResultsPageViewModel resultsPageVM;
+        public NameCalculationWindowViewModel nameCalVM;
+        public NameCalculationWindow nameCalW;
+
         private FScrubber fScrubber;
-        public Dust Dust= new Dust();
-        public List<Dust> TipPili { get;set;}
+        public Dust Dust = new Dust();
+        public List<Dust> TipPili { get; set; }
         public СalculationPageViewModel()
         {
             fScrubber = new FScrubber();
-            
+
             TipPili = Dust.TipPili;
             SelectedItemDust = TipPili[0];
         }
 
         private Dust _SelectedItemDust;
-        public Dust SelectedItemDust 
+        public Dust SelectedItemDust
         {
             get => _SelectedItemDust;
             set
@@ -88,8 +93,23 @@ namespace Scrubber.App.ViewModels.PagesViewModel
                     resultsPageVM.ChisRyad = Math.Round(fScrubber.GetChisloForsunok(), 0);
                     resultsPageVM.SkorRes = Math.Round(fScrubber.GetScorost(), 3);
 
+                    resultsPageVM.resultsPage = resultsPage;
+
                     resultsPage.DataContext = resultsPageVM;
-                    mainWindowVM.CurrentPage = resultsPage;
+                    
+
+                    nameCalVM = new NameCalculationWindowViewModel();
+                    nameCalW = new NameCalculationWindow();
+                    nameCalVM.resultsPageVM = resultsPageVM;
+                    nameCalVM.nameCalW = nameCalW;
+                    nameCalVM.mainWindowVM = mainWindowVM;
+                    nameCalVM.resultsPage = resultsPage;
+                    nameCalW.DataContext = nameCalVM;
+                    nameCalW.ShowDialog();
+
+                    
+
+
                 });
             }
         }
