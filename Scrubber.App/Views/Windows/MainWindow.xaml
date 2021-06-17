@@ -46,7 +46,7 @@
                 <Image Source="/Resources/Icon.png"  Width="70" Height="70"/>
             </Grid>
 
-            <StackPanel Margin="0 30"  VerticalAlignment="Center" Height="185" Grid.Row="1" Background="#FF162B1D">
+            <StackPanel Margin="0 150"  VerticalAlignment="Top" Height="185" Grid.Row="1" Background="#FF162B1D">
                 <Button Command="{Binding OpenTheoryPageCommand}" Background="{Binding BackgroundTheory}"  Height="50" Margin="0 10 0 0" Content="Теория" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
                 <Button Command="{Binding OpenСalculationPageCommand}" Background="{Binding BaackgroundCalculat}"  Height="50" Margin="0 10 0 0" Content="Расчёт" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
                 <Button Command="{Binding OpenResultsPageCommand}" Background="{Binding BackgroundResults}" Height="50" Margin="0 10 0 0" Content="Результаты" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>

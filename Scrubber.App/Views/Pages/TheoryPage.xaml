@@ -2,30 +2,52 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Scrubber.App.Views.Pages" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:vm="clr-namespace:Scrubber.App.ViewModels.PagesViewModel"
-      mc:Ignorable="d" d:DesignWidth="800"
-      Title="TheoryPage" Height="2073">
+      mc:Ignorable="d" d:DesignWidth="1000"
+      Title="TheoryPage" >
 
     <Page.DataContext>
         <vm:TheoryPageViewModel/>
     </Page.DataContext>
 
-    <Grid Background="#FF252526" Margin="20">
+    <Grid  Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid Background="#FF012204" Opacity="0.9"/>
 
         <ScrollViewer Background="White" Grid.Row="1">
             <StackPanel>
                 <TextBlock  Margin="10 10" TextWrapping="Wrap" Text="   Полые форсуночные скрубберы используются для очистки от пыли и растворимых в воде веществ выбросов различных металлургических переделов. Улавливание пылевых частиц в скруббере достигается за счет их контакта с каплями воды, подаваемой с помощью системы форсунок. Скруббер представляет собой колонну прямоугольного или круглого сечения, в которой организуется движение очищаемого газа и орошающей его воды. Обычно применяются скрубберы с противоточным движением газа и воды или скрубберы с поперечным орошением водой движущегося газа. Последние из-за высокого брызгоуноса снабжаются каплеуловителями. Запыленный газ подается в нижнюю часть колонны, и после осаждения пылевых частиц на каплях вода удаляется из скруббера через верхнюю часть колонны. На пути газа располагаются несколько рядов форсунок по 8 ...16 в каждом. Наряду с очисткой газа от пыли и растворения в воде примесей скруббер обеспечивает охлаждение газа до 40 ... 50 °С и его увлажнение практически до состояния насыщения. В связи с этим расчет скруббера должен выполняться как тепло- и массообменного аппарата. Расчетом определяются необходимые размеры скруббера, его режимные характеристики и эффективность улавливания пыли. Расчет и выбор форсунок для подачи орошающей жидкости выполняется по отдельной методике." 
                             FontFamily="Times New Roman" FontSize="18"/>
-                <Image Source="/Resources/Polyiy-skrubber.jpg" Height="261" Width="436"/>
-                <TextBlock Text="Лабораторная работа" Margin="30" FontFamily="Times New Roman" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <Image Source="/Resources/Polyiy-skrubber.jpg" Height="360" Width="550"/>
+                <TextBlock Text="Лабораторная работа" Margin="30" FontFamily="Times New Roman" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold"/>
                 <TextBlock Text="Заполняем исходные данные:" FontFamily="Times New Roman" FontSize="20"
-                           HorizontalAlignment="Left" Margin="20 0"/>
+                           HorizontalAlignment="Left" Margin="20 0" FontWeight="Bold"/>
+                <Image Source="/Resources/Data1.jpg" Height="569" Width="908"/>
+                <TextBlock Text="Задача 1. Для противоточного скруббера исследовать параметры, влияющие на коэффициент энергетической очистки. Объяснить полученные результаты." 
+                           FontFamily="Times New Roman" FontSize="20"
+                           HorizontalAlignment="Left" TextWrapping="Wrap" Margin="20 20 0 0" Width="710" FontWeight="Bold"/>
+                <TextBlock Text="     После внесения исходных данных выберите тип скруббера ''противоточный'' и в поле ''Тип расчета'' поставьте флажок ''по условию строительной устойчивости''. Тем самым будет реализован автоматический подбор скорости движения газа в скруббере с соблюденем рекомендуемых параметров соотношения высоты и диаметра аппарата (H/D≈2,5). После нажатия кнопки ''Рассчитать'' получим экранную форму окончательного расчета:" 
+                           FontFamily="Times New Roman" FontSize="17"
+                           HorizontalAlignment="Left" TextWrapping="Wrap" Margin="20 10" Width="903"/>
+                <TextBlock Text="Экранная форма окончательного расчета противоточного скруббера" FontFamily="Times New Roman" FontSize="20"
+                           HorizontalAlignment="Left" Margin="20 0 0 20" FontWeight="Bold" />
+                <Image Source="/Resources/Result.jpg" Height="569" Width="908"/>
+                <TextBlock Text="    Проанализируйте полученные расчетные данные. Определите исходные параметры, влияющие на энергетический коэффициент степени очистки. Варьируя их, получите повторные результаты расчета и сделайте вывод." FontFamily="Times New Roman" FontSize="17"
+                           HorizontalAlignment="Left" Margin="20 20 0 20" TextWrapping="Wrap" Width="903" />
+                <TextBlock Text="Задача 2. Для скруббера с поперечным орошением исследовать параметры, влияющие на геометрические размеры аппарата. Объяснить полученные результаты." FontFamily="Times New Roman" FontSize="20"
+                           HorizontalAlignment="Left" Margin="20 20 0 10" TextWrapping="Wrap" FontWeight="Bold" />
+                <TextBlock Text="    На форме исходных данных выберите тип скруббера ''с поперечным орошением'' и в поле ''Тип расчета'' поставьте флажок ''по скорости газа в скруббере''. Тем самым вы попытаетесь сами подобрать значение скорости газа, при котором будут соблюдены рекомендуемые параметры соотношения высоты и диаметра аппарата (H/D≈2,5)." 
+                           FontFamily="Times New Roman" FontSize="17"
+                           HorizontalAlignment="Left" Margin="20 0 0 20" TextWrapping="Wrap" Width="895" />
+                <TextBlock Text="Экранная форма исходных данных расчета скруббера с поперечным орошением" FontFamily="Times New Roman" FontSize="20"
+                           HorizontalAlignment="Left" Margin="20 0 0 5" FontWeight="Bold" TextWrapping="Wrap" />
+                <Image Source="/Resources/Data2.jpg" Height="569" Width="908"/>
+                <TextBlock Text="    Проанализируйте полученные расчетные данные. Определите исходные параметры, влияющие на геометрические размеры аппарата. Варьируя их, получите повторные результаты расчета и сделайте вывод." FontFamily="Times New Roman" FontSize="17"
+                           HorizontalAlignment="Left" Margin="20 20 0 20" TextWrapping="Wrap" />
             </StackPanel>
         </ScrollViewer>
 

@@ -334,6 +334,15 @@
   <ItemGroup>
     <Resource Include="Resources\Report.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Data2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Result.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
