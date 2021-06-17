@@ -2,6 +2,8 @@
 using Scrubber.App.ViewModels.Base;
 using Scrubber.App.ViewModels.PagesViewModel;
 using Scrubber.App.Views.Pages;
+using Scrubber.App.Views.Windows;
+using Scrubber.MatLibrary;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -10,43 +12,109 @@ namespace Scrubber.App.ViewModels.WindowsViewModel
 {
     class MainWindowViewModel : ViewModel
     {
-        private readonly Page theoryPage;
-        private readonly Page calculationPage;
-        private readonly Page resultsPage;
+        public FScrubber fScrubber;
+        public Page TheoryPage { get; set; }
+        public Page CalculationPage { get; set; }
+        public Page ResultsPage { get; set; }
 
-        private ResultsPageViewModel resultsPageVM;
-        private TheoryPageViewModel theoryPageVM;
-        private СalculationPageViewModel calculationPageVM;
+        public Window NameCalculationW { get; set; }
+        public ReportWindow ReportW { get; set; }
+
+        public MainWindowViewModel MainWindowVM { get; set; }
+        public ResultsPageViewModel ResultsPageVM { get; set; }
+        public TheoryPageViewModel TheoryPageVM { get; set; }
+        public СalculationPageViewModel CalculationPageVM { get; set; }
+
+        public NameCalculationWindowViewModel NameCalculationWindowVM { get; set; }
+        public ReportWindowViewModel ReportWindowVM { get; set; }
+
+        #region Изменение цвета 
+        private string backgroundTheory = "#FF162B1D";
+        public string BackgroundTheory
+        {
+            get => backgroundTheory;
+            set => Set(ref backgroundTheory, value);
+        }
+        private string backgroundCalculat = "#FF162B1D";
+        public string BaackgroundCalculat
+        {
+            get => backgroundCalculat;
+            set => Set(ref backgroundCalculat, value);
+        }
+        private string backgroundResults = "#FF162B1D";
+        public string BackgroundResults
+        {
+            get => backgroundResults;
+            set => Set(ref backgroundResults, value);
+        }
+
+        #endregion
+
 
         private Page _CurrentPage;
         public Page CurrentPage
         {
             get => _CurrentPage;
-            set => Set(ref _CurrentPage, value);
+            set
+            {
+                Set(ref _CurrentPage, value);
+                if(CurrentPage == TheoryPage)
+                {
+                    BackgroundTheory = "#FF356545";
+                    BaackgroundCalculat = "#FF162B1D";
+                    BackgroundResults = "#FF162B1D";
+                }
+                if (CurrentPage == CalculationPage)
+                {
+                    BackgroundTheory = "#FF162B1D";
+                    BaackgroundCalculat = "#FF356545";
+                    BackgroundResults = "#FF162B1D";
+                }
+                if (CurrentPage == ResultsPage)
+                {
+                    BackgroundTheory = "#FF162B1D";
+                    BaackgroundCalculat = "#FF162B1D";
+                    BackgroundResults = "#FF356545";
+                }
+            }
         }
 
         public MainWindowViewModel()
         {
-            resultsPageVM = new ResultsPageViewModel();
-            theoryPageVM = new TheoryPageViewModel();
-            calculationPageVM = new СalculationPageViewModel();
+            fScrubber = new FScrubber();
             
-            theoryPage = new TheoryPage();
-            theoryPage.DataContext = theoryPageVM;
+            TheoryPage = new TheoryPage();
+            CalculationPage = new СalculationPage();
+            ResultsPage = new ResultsPage();
 
-            calculationPage = new СalculationPage();
-            calculationPage.DataContext = calculationPageVM;
+            NameCalculationW = new NameCalculationWindow();
+            ReportW = new ReportWindow();
 
-            resultsPage = new ResultsPage();
-            resultsPage.DataContext = resultsPageVM;
+            TheoryPageVM = new TheoryPageViewModel();
+            CalculationPageVM = new СalculationPageViewModel();
+            ResultsPageVM = new ResultsPageViewModel();
 
-            calculationPageVM.resultsPageVM = resultsPageVM;
-            calculationPageVM.resultsPage = resultsPage;
-
-            CurrentPage = calculationPage;
+            NameCalculationWindowVM = new NameCalculationWindowViewModel();
+            ReportWindowVM = new ReportWindowViewModel();
 
 
-            calculationPageVM.mainWindowVM = this;
+            //TheoryPageVM.mainWindowVM = this;
+            CalculationPageVM.MainWindowVM = this;
+            ResultsPageVM.MainWindowVM = this;
+            NameCalculationWindowVM.MainWindowVM = this;
+            ReportWindowVM.MainWindowVM = this;
+            //ResultsPageVM.сalculationPageVM = CalculationPageVM;
+
+            TheoryPage.DataContext = TheoryPageVM;
+            CalculationPage.DataContext = CalculationPageVM;
+            ResultsPage.DataContext = ResultsPageVM;
+
+            NameCalculationW.DataContext = NameCalculationWindowVM;
+            ReportW.DataContext = ReportWindowVM;
+
+
+            CurrentPage = CalculationPage;
+
         }
 
         #region Команды
@@ -58,7 +126,7 @@ namespace Scrubber.App.ViewModels.WindowsViewModel
             {
                 return new RelayCommand(obj =>
                 {
-                    CurrentPage = theoryPage;
+                    CurrentPage = TheoryPage;
                 });
             }
         }
@@ -69,7 +137,7 @@ namespace Scrubber.App.ViewModels.WindowsViewModel
             {
                 return new RelayCommand(obj =>
                 {
-                    CurrentPage = calculationPage;
+                    CurrentPage = CalculationPage;
                 });
             }
         }
@@ -81,8 +149,7 @@ namespace Scrubber.App.ViewModels.WindowsViewModel
             {
                 return new RelayCommand(obj =>
                 {
-                    resultsPage.DataContext = resultsPageVM;
-                    CurrentPage = resultsPage;
+                    CurrentPage = ResultsPage;
                 });
             }
         }

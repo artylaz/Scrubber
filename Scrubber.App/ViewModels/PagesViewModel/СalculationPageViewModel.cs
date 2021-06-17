@@ -1,26 +1,24 @@
 ﻿using Scrubber.App.Infrastructure.Commands;
 using Scrubber.App.ViewModels.Base;
 using Scrubber.App.ViewModels.WindowsViewModel;
-using Scrubber.App.Views.Pages;
-using Scrubber.App.Views.Windows;
 using Scrubber.MatLibrary;
 using System;
 using System.Collections.Generic;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Scrubber.App.ViewModels.PagesViewModel
 {
     class СalculationPageViewModel : ViewModel
     {
-        public MainWindowViewModel mainWindowVM;
-        public Page resultsPage;
-        public ResultsPageViewModel resultsPageVM;
-        public NameCalculationWindowViewModel nameCalVM;
-        public NameCalculationWindow nameCalW;
-
+        
+        private MainWindowViewModel _MainWindowVM;
+        public MainWindowViewModel MainWindowVM { get => _MainWindowVM; set => Set(ref _MainWindowVM, value); }
+   
         private FScrubber fScrubber;
+   
         public Dust Dust = new Dust();
+
+   
         public List<Dust> TipPili { get; set; }
         public СalculationPageViewModel()
         {
@@ -29,7 +27,7 @@ namespace Scrubber.App.ViewModels.PagesViewModel
             TipPili = Dust.TipPili;
             SelectedItemDust = TipPili[0];
         }
-
+     
         private Dust _SelectedItemDust;
         public Dust SelectedItemDust
         {
@@ -42,85 +40,84 @@ namespace Scrubber.App.ViewModels.PagesViewModel
             }
         }
 
+
         public ICommand СalculationCommand
         {
             get
             {
                 return new RelayCommand(obj =>
                 {
-                    fScrubber.BarDavlenie = (double)BarDavlenie;
-                    fScrubber.IzbitDavlenie = (double)IzbitDavlenie;
-                    fScrubber.Rashod = (double)Rashod;
-                    fScrubber.TemperaturaGazaVhod = (double)TemperGazaVhod;
-                    fScrubber.TemperaturaGazaVihod = (double)TemperGazaVihod;
-                    fScrubber.TeploemkGazaVhod = (double)TeploemkVhod;
-                    fScrubber.TeploemkGazaVihod = (double)TeploemkVihod;
-                    fScrubber.NachVlagosod = (double)NachVlagosoderg;
-                    fScrubber.PlotnostSuhGaz = (double)PlotnostSuhGaza;
-                    fScrubber.PlotnostOroshGidkosti = (double)PlotnostGidk;
-                    fScrubber.DinamVjazkostGaza = (double)DinamVjazkostGaza;
-                    fScrubber.TemperVodiVhod = (double)TemperVodiVhod;
-                    fScrubber.TeploemkVodi1 = (double)TeploemkVodi1;
-                    fScrubber.TeploemkVodi2 = (double)TeploemkVodi2;
-                    fScrubber.Poteri = (double)Poteri;
-                    fScrubber.TeploemkPara = (double)TeploemkPara;
-                    fScrubber.KoefIsparenia = (double)KoefIspar;
-                    fScrubber.DavlenieVodi = (double)DavlenVodi;
-                    fScrubber.DiametrKapel = (double)DiametrKapel;
-                    fScrubber.SrednMedRazmer = (double)SrednMedRazmer;
-                    fScrubber.PlotnostPili = (double)PlotnostChastic;
-                    fScrubber.ScorostGazaVihod = (double)ScorostVihod;
-                    fScrubber.KoefB = (double)KoefB;
-                    fScrubber.KoefE = (double)KoefE;
-
-                    if (IsCheckedTipCkr == true)
-                        fScrubber.TipScrubbera = 0;
-                    else
-                        fScrubber.TipScrubbera = 1;
-
-                    if (IsCheckedTipRasch == true)
-                        fScrubber.Tiprascheta = 0;
-                    else
-                        fScrubber.Tiprascheta = 1;
-
-                    resultsPageVM.EkvDiamCk = Math.Round(fScrubber.GetDiametr(), 3);
-                    resultsPageVM.AktVisotaCk = Math.Round(fScrubber.GetVisotaScrubber(), 3);
-                    resultsPageVM.RasstRes = Math.Round(fScrubber.GetRasstPervRjada(), 3);
-                    resultsPageVM.RasstRyadRes = Math.Round(fScrubber.GetRasstMuRjadami(), 3);
-                    resultsPageVM.EnergStep = Math.Round(fScrubber.GetStepOchistEnerg(), 5);
-                    resultsPageVM.RasPlotRes = Math.Round(fScrubber.GetPloschOroshenia(), 3);
-                    resultsPageVM.RasStepRes = Math.Round(fScrubber.GetStepOchistRasch(), 5);
-                    resultsPageVM.ChisRyad = Math.Round(fScrubber.GetChisloForsunok(), 0);
-                    resultsPageVM.SkorRes = Math.Round(fScrubber.GetScorost(), 3);
-
-                    resultsPageVM.resultsPage = resultsPage;
-
-                    resultsPage.DataContext = resultsPageVM;
-                    
-
-                    nameCalVM = new NameCalculationWindowViewModel();
-                    nameCalW = new NameCalculationWindow();
-                    nameCalVM.resultsPageVM = resultsPageVM;
-                    nameCalVM.nameCalW = nameCalW;
-                    nameCalVM.mainWindowVM = mainWindowVM;
-                    nameCalVM.resultsPage = resultsPage;
-                    nameCalW.DataContext = nameCalVM;
-                    nameCalW.ShowDialog();
-
-                    
+                    if (BarDavlenie != null && IzbitDavlenie != null && Rashod != null && TemperGazaVhod != null
+                    && TemperGazaVihod != null && TeploemkVhod != null && TeploemkVihod != null && NachVlagosoderg != null
+                    && PlotnostSuhGaza != null && PlotnostGidk != null && DinamVjazkostGaza != null && TemperVodiVhod != null
+                    && TeploemkVodi1 != null && TeploemkVodi2 != null && Poteri != null
+                    && TeploemkPara != null && KoefIspar != null && DavlenVodi != null && DiametrKapel != null && SrednMedRazmer != null
+                    && PlotnostChastic != null && ScorostVihod != null && KoefB != null && KoefE != null)
+                    {
+                        try
+                        {
+                            fScrubber.BarDavlenie = (double)BarDavlenie;
+                            fScrubber.IzbitDavlenie = (double)IzbitDavlenie;
+                            fScrubber.Rashod = (double)Rashod;
+                            fScrubber.TemperaturaGazaVhod = (double)TemperGazaVhod;
+                            fScrubber.TemperaturaGazaVihod = (double)TemperGazaVihod;
+                            fScrubber.TeploemkGazaVhod = (double)TeploemkVhod;
+                            fScrubber.TeploemkGazaVihod = (double)TeploemkVihod;
+                            fScrubber.NachVlagosod = (double)NachVlagosoderg;
+                            fScrubber.PlotnostSuhGaz = (double)PlotnostSuhGaza;
+                            fScrubber.PlotnostOroshGidkosti = (double)PlotnostGidk;
+                            fScrubber.DinamVjazkostGaza = (double)DinamVjazkostGaza;
+                            fScrubber.TemperVodiVhod = (double)TemperVodiVhod;
+                            fScrubber.TeploemkVodi1 = (double)TeploemkVodi1;
+                            fScrubber.TeploemkVodi2 = (double)TeploemkVodi2;
+                            fScrubber.Poteri = (double)Poteri;
+                            fScrubber.TeploemkPara = (double)TeploemkPara;
+                            fScrubber.KoefIsparenia = (double)KoefIspar;
+                            fScrubber.DavlenieVodi = (double)DavlenVodi;
+                            fScrubber.DiametrKapel = (double)DiametrKapel;
+                            fScrubber.SrednMedRazmer = (double)SrednMedRazmer;
+                            fScrubber.PlotnostPili = (double)PlotnostChastic;
+                            fScrubber.ScorostGazaVihod = (double)ScorostVihod;
+                            fScrubber.KoefB = (double)KoefB;
+                            fScrubber.KoefE = (double)KoefE;
+                        }
+                        catch { }
 
 
+                            if (IsCheckedTipCkr == true)
+                                fScrubber.TipScrubbera = 0;
+                            else
+                                fScrubber.TipScrubbera = 1;
+
+                            if (IsCheckedTipRasch == true)
+                                fScrubber.Tiprascheta = 0;
+                            else
+                                fScrubber.Tiprascheta = 1;
+
+
+                            MainWindowVM.ResultsPageVM.EkvDiamCk = Math.Round(fScrubber.GetDiametr(), 3);
+                            MainWindowVM.ResultsPageVM.AktVisotaCk = Math.Round(fScrubber.GetVisotaScrubber(), 3);
+                            MainWindowVM.ResultsPageVM.RasstRes = Math.Round(fScrubber.GetRasstPervRjada(), 3);
+                            MainWindowVM.ResultsPageVM.RasstRyadRes = Math.Round(fScrubber.GetRasstMuRjadami(), 3);
+                            MainWindowVM.ResultsPageVM.EnergStep = Math.Round(fScrubber.GetStepOchistEnerg(), 5);
+                            MainWindowVM.ResultsPageVM.RasPlotRes = Math.Round(fScrubber.GetPloschOroshenia(), 3);
+                            MainWindowVM.ResultsPageVM.RasStepRes = Math.Round(fScrubber.GetStepOchistRasch(), 5);
+                            MainWindowVM.ResultsPageVM.ChisRyad = Math.Round(fScrubber.GetChisloForsunok(), 0);
+                            MainWindowVM.ResultsPageVM.SkorRes = Math.Round(fScrubber.GetScorost(), 3);
+
+                            MainWindowVM.NameCalculationW.ShowDialog();
+                        
+                    }
                 });
             }
         }
 
         public bool IsCheckedTipCkr { get; set; } = true;
+
         public bool IsCheckedTipRasch { get; set; } = true;
 
         #region Исходные данные
 
-        private int _tipRascheta = 0;
-        private int _TipScrubbera = 0;
         private double? _BarDavlenie = 101;
         private double? _IzbitDavlenie = 12;
         private double? _Rashod = 18;
@@ -146,8 +143,6 @@ namespace Scrubber.App.ViewModels.PagesViewModel
         private double? _KoefB = 0.0988;
         private double? _KoefE = 0.4663;
 
-        public int TipRascheta { get => _tipRascheta; set => Set(ref _tipRascheta, value); }
-        public int TipScrubbera { get => _TipScrubbera; set => Set(ref _TipScrubbera, value); }
         public double? BarDavlenie { get => _BarDavlenie; set => Set(ref _BarDavlenie, value); }
         public double? IzbitDavlenie { get => _IzbitDavlenie; set => Set(ref _IzbitDavlenie, value); }
         public double? Rashod { get => _Rashod; set => Set(ref _Rashod, value); }

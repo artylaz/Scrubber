@@ -1,12 +1,19 @@
-﻿using Scrubber.App.ViewModels.Base;
+﻿using Scrubber.App.Infrastructure.Commands;
+using Scrubber.App.ViewModels.Base;
+using Scrubber.App.ViewModels.WindowsViewModel;
+using Scrubber.App.Views.Windows;
 using System.Collections.ObjectModel;
-using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Scrubber.App.ViewModels.PagesViewModel
 {
+
     class ResultsPageViewModel : ViewModel
     {
-        public Page resultsPage;
+        private MainWindowViewModel _MainWindowVM;
+        public MainWindowViewModel MainWindowVM { get => _MainWindowVM; set => Set(ref _MainWindowVM, value); }
+
+        public СalculationPageViewModel сalculationPageVM;
 
         private double _EkvDiamCk;
         private double _AktVisotaCk;
@@ -39,16 +46,63 @@ namespace Scrubber.App.ViewModels.PagesViewModel
             set
             {
                 Set(ref _SelectedResultsItem, value);
-                EkvDiamCk = SelectedResultsItem.EkvDiamCk;
-                AktVisotaCk = SelectedResultsItem.AktVisotaCk;
-                RasstRes = SelectedResultsItem.RasstRes;
-                RasstRyadRes = SelectedResultsItem.RasstRyadRes;
-                EnergStep = SelectedResultsItem.EnergStep;
-                RasPlotRes = SelectedResultsItem.RasPlotRes;
-                RasStepRes = SelectedResultsItem.RasStepRes;
-                ChisRyad = SelectedResultsItem.ChisRyad;
-                SkorRes = SelectedResultsItem.SkorRes;
-                Results = SelectedResultsItem.Results;
+                if (SelectedResultsItem != null)
+                {
+                    EkvDiamCk = SelectedResultsItem.EkvDiamCk;
+                    AktVisotaCk = SelectedResultsItem.AktVisotaCk;
+                    RasstRes = SelectedResultsItem.RasstRes;
+                    RasstRyadRes = SelectedResultsItem.RasstRyadRes;
+                    EnergStep = SelectedResultsItem.EnergStep;
+                    RasPlotRes = SelectedResultsItem.RasPlotRes;
+                    RasStepRes = SelectedResultsItem.RasStepRes;
+                    ChisRyad = SelectedResultsItem.ChisRyad;
+                    SkorRes = SelectedResultsItem.SkorRes;
+                    Results = SelectedResultsItem.Results;
+                }
+            }
+        }
+        public ICommand ReportCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    if(MainWindowVM.ResultsPageVM.Results.Count != 0 && MainWindowVM.ResultsPageVM.SelectedResultsItem != null)
+                    { 
+                    MainWindowVM.ReportW = new ReportWindow();
+                    MainWindowVM.ReportWindowVM = new ReportWindowViewModel();
+                    MainWindowVM.ReportWindowVM.MainWindowVM = MainWindowVM;
+                    MainWindowVM.ReportWindowVM.resultsPageVM = MainWindowVM.ResultsPageVM;
+                    MainWindowVM.ReportWindowVM.resultsPageVM.сalculationPageVM = MainWindowVM.ResultsPageVM.сalculationPageVM;
+                    MainWindowVM.ReportW.DataContext = MainWindowVM.ReportWindowVM;
+                    MainWindowVM.ReportW.ShowDialog();
+                    }
+                });
+            }
+        }
+
+        public ICommand RemoveResultCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    if (SelectedResultsItem is ResultsPageViewModel)
+                    {
+                        Results.Remove(SelectedResultsItem);
+                    }
+                });
+            }
+        }
+
+        public ICommand RemoveAllResultCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                        Results.Clear();
+                });
             }
         }
 

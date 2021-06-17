@@ -46,11 +46,11 @@
                 <Image Source="/Resources/Icon.png"  Width="70" Height="70"/>
             </Grid>
 
-            <StackPanel Margin="0,49.6,0.4,0"  VerticalAlignment="Top" Height="247" Grid.Row="1" Background="#FF162B1D">
-                <Button Command="{Binding OpenTheoryPageCommand}" Height="50" Margin="0 10 0 0" Content="Теория" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
-                <Button Command="{Binding OpenСalculationPageCommand}" Height="50" Margin="0 10 0 0" Content="Расчёт" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
-                <Button Command="{Binding OpenResultsPageCommand}" Height="50" Margin="0 10 0 0" Content="Результаты" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
-                <Button Height="50" Margin="0 10 0 0" Content="Теория" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
+            <StackPanel Margin="0 30"  VerticalAlignment="Center" Height="185" Grid.Row="1" Background="#FF162B1D">
+                <Button Command="{Binding OpenTheoryPageCommand}" Background="{Binding BackgroundTheory}"  Height="50" Margin="0 10 0 0" Content="Теория" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
+                <Button Command="{Binding OpenСalculationPageCommand}" Background="{Binding BaackgroundCalculat}"  Height="50" Margin="0 10 0 0" Content="Расчёт" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
+                <Button Command="{Binding OpenResultsPageCommand}" Background="{Binding BackgroundResults}" Height="50" Margin="0 10 0 0" Content="Результаты" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
+                
             </StackPanel>
 
             <StackPanel Grid.Row="1" Height="50" VerticalAlignment="Bottom" Margin="0 0 0 20"  Orientation="Horizontal" >

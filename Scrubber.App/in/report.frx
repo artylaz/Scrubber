@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="06/20/2009 23:03:47" ReportInfo.Modified="05/27/2021 14:23:53" ReportInfo.CreatorVersion="2021.3.0.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="Categories" ReferenceName="Categories" DataType="null" Enabled="true">
+      <Column Name="Name" DataType="System.String"/>
+      <Column Name="Description" DataType="System.String"/>
+      <BusinessObjectDataSource Name="Results" DataType="null" Enabled="true">
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="UnitResult" DataType="System.Double"/>
+      </BusinessObjectDataSource>
+    </BusinessObjectDataSource>
+    <BusinessObjectDataSource Name="Results" ReferenceName="Results" DataType="null" Enabled="true">
+      <Column Name="Name" DataType="System.String"/>
+      <Column Name="UnitResult" DataType="System.Double"/>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="1000" Height="37.8">
+      <TextObject Name="Text2" Width="718.2" Height="28.35" Text="Отчёт по расчету полого форсуночного скруббера" HorzAlign="Center" VertAlign="Center" Font="Times new roman, 15pt, style=Bold"/>
+    </ReportTitleBand>
+    <DataBand Name="Data1" Top="163.2" Width="1000" Height="103.95" DataSource="Categories">
+      <TextObject Name="Text1" Top="18.9" Width="650" Height="37.8" Fill.Color="#FF50C0CB" Text="[Categories.Name]" VertAlign="Center" Font="Times new roman, 12pt, style=Bold"/>
+      <TextObject Name="Text3" Top="56.7" Width="650" Height="18.9" Fill.Color="#FF50C0CB" Text="[Categories.Description]" Font="Times new roman, 10pt"/>
+      <TextObject Name="Text6" Top="85.05" Width="245.7" Height="18.9" Text="Величина" VertAlign="Center" Font="Times new roman, 13pt, style=Bold"/>
+      <TextObject Name="Text7" Left="500" Top="85.05" Width="94.5" Height="18.9" Text="Значение" HorzAlign="Right" VertAlign="Center" Font="Times new roman, 13pt, style=Bold"/>
+      <DataBand Name="Data2" Top="271.15" Width="718.2" Height="37.8" DataSource="Results">
+        <TextObject Name="Text4" Width="245.7" Height="18.9" Text="[Categories.Results.Name]" Font="Times new roman, 13pt"/>
+        <TextObject Name="Text5" Left="500" Width="94.5" Height="18.9" Text="[Categories.Results.UnitResult]" Format="Double" Format.UseLocale="true" Format.DoubleDigits="2" HorzAlign="Right" WordWrap="false" Font="Times new roman, 13pt" Trimming="EllipsisCharacter"/>
+      </DataBand>
+    </DataBand>
+  </ReportPage>
+</Report>

@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Scrubber.App.Views.Pages" 
+      xmlns:ico="http://schemas.fontawesome.com/icons/"
       xmlns:vm="clr-namespace:Scrubber.App.ViewModels.PagesViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="1050"
@@ -13,107 +13,126 @@
         <vm:ResultsPageViewModel/>
     </Page.DataContext>
 
-    <Grid Margin="70">
+    <Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="300"/>
-        </Grid.ColumnDefinitions>
+        <TextBlock Text="Расчёты" FontFamily="Times New Roman" FontSize="30" Foreground="White" Margin="772,25,163.6,687.4" />
 
-        <Grid.Resources>
-            <Style TargetType="{x:Type TextBlock}">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontFamily" Value="Times New Roman"/>
-                <Setter Property="Foreground" Value="White"/>
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-            </Style>
+        <Grid Margin="70">
 
-            <Style TargetType="{x:Type TextBox}">
-                <Setter Property="Width" Value="18"/>
-                <Setter Property="Height" Value="30"/>
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="Width" Value="90"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="IsUndoEnabled" Value="True"/>
-                <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
-                <Setter Property="Margin" Value="20 0"/>
-                <Setter Property="BorderThickness" Value="3"/>
-                <Setter Property="IsReadOnly" Value="True"/>
-            </Style>
-        </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0">
 
-            <StackPanel.Resources>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Margin" Value="5 30 0 0"/>
+
+            <Grid.Resources>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="FontSize" Value="18"/>
+                    <Setter Property="FontFamily" Value="Times New Roman"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
                 </Style>
-            </StackPanel.Resources>
 
-            <Grid >
-                <TextBlock Text="Эквивалентный диаметр скруббера, м" />
-                <TextBox Text="{Binding EkvDiamCk}"  Width="90" HorizontalAlignment="Right"/>
-            </Grid>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="Width" Value="18"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="FontSize" Value="18"/>
+                    <Setter Property="Width" Value="90"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="IsUndoEnabled" Value="True"/>
+                    <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+                    <Setter Property="Margin" Value="20 0"/>
+                    <Setter Property="BorderThickness" Value="3"/>
+                    <Setter Property="IsReadOnly" Value="True"/>
+                </Style>
+            </Grid.Resources>
 
-            <Grid >
-                <TextBlock Text="Активная высота скруббера, м"/>
-                <TextBox Text="{Binding AktVisotaCk}" Width="90" HorizontalAlignment="Right" />
-            </Grid>
+            <StackPanel Grid.Row="0">
 
-            <Grid >
-                <TextBlock Text="Расстояние между осью подвода газа и первым рядом форсунок, м"
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Grid}">
+                        <Setter Property="Margin" Value="5 30 0 0"/>
+                    </Style>
+                </StackPanel.Resources>
+
+                <Grid >
+                    <TextBlock Text="Эквивалентный диаметр скруббера, м" />
+                    <TextBox Text="{Binding EkvDiamCk}"  Width="90" HorizontalAlignment="Right"/>
+                </Grid>
+
+                <Grid >
+                    <TextBlock Text="Активная высота скруббера, м"/>
+                    <TextBox Text="{Binding AktVisotaCk}" Width="90" HorizontalAlignment="Right" />
+                </Grid>
+
+                <Grid >
+                    <TextBlock Text="Расстояние между осью подвода газа и первым рядом форсунок, м"
                            TextWrapping="Wrap" Width="450"/>
-                <TextBox Text="{Binding RasstRes}" Width="90" HorizontalAlignment="Right"/>
-            </Grid>
+                    <TextBox Text="{Binding RasstRes}" Width="90" HorizontalAlignment="Right"/>
+                </Grid>
 
-            <Grid >
-                <TextBlock Text="Расстояние между рядами форсунок, м"/>
-                <TextBox Text="{Binding RasstRyadRes}" Width="90" HorizontalAlignment="Right"/>
-            </Grid>
+                <Grid >
+                    <TextBlock Text="Расстояние между рядами форсунок, м"/>
+                    <TextBox Text="{Binding RasstRyadRes}" Width="90" HorizontalAlignment="Right"/>
+                </Grid>
 
-            <Grid >
-                <TextBlock Text="Энергетический коэффициент степени очистки"/>
-                <TextBox Text="{Binding EnergStep}" Width="90" HorizontalAlignment="Right"/>
-            </Grid>
+                <Grid >
+                    <TextBlock Text="Энергетический коэффициент степени очистки"/>
+                    <TextBox Text="{Binding EnergStep}" Width="90" HorizontalAlignment="Right"/>
+                </Grid>
 
-            <Grid >
-                <TextBlock Text="Расчетная плотность орошения газа" HorizontalAlignment="Left"
+                <Grid >
+                    <TextBlock Text="Расчетная плотность орошения газа" HorizontalAlignment="Left"
                            TextWrapping="Wrap" Width="300"/>
-                <TextBox Text="{Binding RasPlotRes}" Width="90" HorizontalAlignment="Right" />
-            </Grid>
+                    <TextBox Text="{Binding RasPlotRes}" Width="90" HorizontalAlignment="Right" />
+                </Grid>
 
-            <Grid >
-                <TextBlock Text="Расчетная степень очистки" HorizontalAlignment="Left"
+                <Grid >
+                    <TextBlock Text="Расчетная степень очистки" HorizontalAlignment="Left"
                            TextWrapping="Wrap" Width="300"/>
-                <TextBox Text="{Binding RasStepRes}" Width="90" HorizontalAlignment="Right"/>
-            </Grid>
+                    <TextBox Text="{Binding RasStepRes}" Width="90" HorizontalAlignment="Right"/>
+                </Grid>
 
-            <Grid >
-                <TextBlock Text="Число рядов форсунок" HorizontalAlignment="Left"
+                <Grid >
+                    <TextBlock Text="Число рядов форсунок" HorizontalAlignment="Left"
                            TextWrapping="Wrap" Width="300"/>
-                <TextBox Text="{Binding ChisRyad}" Width="90" HorizontalAlignment="Right" />
-            </Grid>
+                    <TextBox Text="{Binding ChisRyad}" Width="90" HorizontalAlignment="Right" />
+                </Grid>
 
-            <Grid >
-                <TextBlock Text="Расчетная скорость газа в скруббере, м/с" HorizontalAlignment="Left"
+                <Grid >
+                    <TextBlock Text="Расчетная скорость газа в скруббере, м/с" HorizontalAlignment="Left"
                            />
-                <TextBox Text="{Binding SkorRes}" Width="90" HorizontalAlignment="Right"/>
+                    <TextBox Text="{Binding SkorRes}" Width="90" HorizontalAlignment="Right"/>
+                </Grid>
+
+            </StackPanel>
+
+            <Grid Grid.Column="1">
+
+                <ListBox ItemsSource="{Binding Results}" SelectedItem="{Binding SelectedResultsItem}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NameResult}" FontFamily="Times New Roman" FontSize="18" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+
+
             </Grid>
+            <Grid  Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,0.6,-58.6" Width="279" >
 
-        </StackPanel>
+                <Button Command="{Binding RemoveResultCommand}" Content="Удалить" Margin="6,9,195,10" FontSize="18" FontFamily="Times New Roman" FontWeight="Bold" />
 
-        <Grid Grid.Column="1">
-            <ListBox ItemsSource="{Binding Results}" SelectedItem="{Binding SelectedResultsItem}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding NameResult}" FontFamily="Times New Roman" FontSize="18" TextWrapping="Wrap"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                <Button Command="{Binding RemoveAllResultCommand}" Content="Удалить всё" Height="30" Margin="140,9,25,11" FontFamily="Times New Roman" FontSize="18" FontWeight="Bold" />
+            </Grid>
         </Grid>
+        <Button Command="{Binding ReportCommand}" Content="Отчёт" Margin="236,682,705.6,26.4" FontSize="18" FontFamily="Times New Roman" FontWeight="Bold" />
 
     </Grid>
+
 </Page>

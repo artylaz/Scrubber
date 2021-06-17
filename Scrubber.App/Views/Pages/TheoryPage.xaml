@@ -5,22 +5,28 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Scrubber.App.Views.Pages" 
       xmlns:vm="clr-namespace:Scrubber.App.ViewModels.PagesViewModel"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="TheoryPage">
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="TheoryPage" Height="2073">
 
     <Page.DataContext>
         <vm:TheoryPageViewModel/>
     </Page.DataContext>
 
-    <Grid>
+    <Grid Background="#FF252526" Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="1">
-            
+        <ScrollViewer Background="White" Grid.Row="1">
+            <StackPanel>
+                <TextBlock  Margin="10 10" TextWrapping="Wrap" Text="   Полые форсуночные скрубберы используются для очистки от пыли и растворимых в воде веществ выбросов различных металлургических переделов. Улавливание пылевых частиц в скруббере достигается за счет их контакта с каплями воды, подаваемой с помощью системы форсунок. Скруббер представляет собой колонну прямоугольного или круглого сечения, в которой организуется движение очищаемого газа и орошающей его воды. Обычно применяются скрубберы с противоточным движением газа и воды или скрубберы с поперечным орошением водой движущегося газа. Последние из-за высокого брызгоуноса снабжаются каплеуловителями. Запыленный газ подается в нижнюю часть колонны, и после осаждения пылевых частиц на каплях вода удаляется из скруббера через верхнюю часть колонны. На пути газа располагаются несколько рядов форсунок по 8 ...16 в каждом. Наряду с очисткой газа от пыли и растворения в воде примесей скруббер обеспечивает охлаждение газа до 40 ... 50 °С и его увлажнение практически до состояния насыщения. В связи с этим расчет скруббера должен выполняться как тепло- и массообменного аппарата. Расчетом определяются необходимые размеры скруббера, его режимные характеристики и эффективность улавливания пыли. Расчет и выбор форсунок для подачи орошающей жидкости выполняется по отдельной методике." 
+                            FontFamily="Times New Roman" FontSize="18"/>
+                <Image Source="/Resources/Polyiy-skrubber.jpg" Height="261" Width="436"/>
+                <TextBlock Text="Лабораторная работа" Margin="30" FontFamily="Times New Roman" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Text="Заполняем исходные данные:" FontFamily="Times New Roman" FontSize="20"
+                           HorizontalAlignment="Left" Margin="20 0"/>
+            </StackPanel>
         </ScrollViewer>
 
     </Grid>
