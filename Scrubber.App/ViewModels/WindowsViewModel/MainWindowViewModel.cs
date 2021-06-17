@@ -19,14 +19,15 @@ namespace Scrubber.App.ViewModels.WindowsViewModel
 
         public Window NameCalculationW { get; set; }
         public ReportWindow ReportW { get; set; }
+        public GuideWindow GuideW{ get; set; }
 
         public MainWindowViewModel MainWindowVM { get; set; }
         public ResultsPageViewModel ResultsPageVM { get; set; }
-        public TheoryPageViewModel TheoryPageVM { get; set; }
         public СalculationPageViewModel CalculationPageVM { get; set; }
 
         public NameCalculationWindowViewModel NameCalculationWindowVM { get; set; }
         public ReportWindowViewModel ReportWindowVM { get; set; }
+        public GuideWindowViewModel GuideWindowVM { get; set; }
 
         #region Изменение цвета 
         private string backgroundTheory = "#FF162B1D";
@@ -89,13 +90,14 @@ namespace Scrubber.App.ViewModels.WindowsViewModel
 
             NameCalculationW = new NameCalculationWindow();
             ReportW = new ReportWindow();
+            GuideW = new GuideWindow();
 
-            TheoryPageVM = new TheoryPageViewModel();
             CalculationPageVM = new СalculationPageViewModel();
             ResultsPageVM = new ResultsPageViewModel();
 
             NameCalculationWindowVM = new NameCalculationWindowViewModel();
             ReportWindowVM = new ReportWindowViewModel();
+            GuideWindowVM = new GuideWindowViewModel();
 
 
             //TheoryPageVM.mainWindowVM = this;
@@ -103,17 +105,17 @@ namespace Scrubber.App.ViewModels.WindowsViewModel
             ResultsPageVM.MainWindowVM = this;
             NameCalculationWindowVM.MainWindowVM = this;
             ReportWindowVM.MainWindowVM = this;
+            GuideWindowVM.MainWindowVM = this;
             //ResultsPageVM.сalculationPageVM = CalculationPageVM;
 
-            TheoryPage.DataContext = TheoryPageVM;
             CalculationPage.DataContext = CalculationPageVM;
             ResultsPage.DataContext = ResultsPageVM;
 
             NameCalculationW.DataContext = NameCalculationWindowVM;
             ReportW.DataContext = ReportWindowVM;
+            GuideW.DataContext = GuideWindowVM;
 
-
-            CurrentPage = CalculationPage;
+            CurrentPage = TheoryPage;
 
         }
 
@@ -150,6 +152,18 @@ namespace Scrubber.App.ViewModels.WindowsViewModel
                 return new RelayCommand(obj =>
                 {
                     CurrentPage = ResultsPage;
+                });
+            }
+        }
+        public ICommand OpenGuideCommadn
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    GuideW = new GuideWindow();
+                    GuideW.DataContext = GuideWindowVM;
+                    GuideW.ShowDialog();
                 });
             }
         }

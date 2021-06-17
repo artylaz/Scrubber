@@ -110,8 +110,12 @@
     <Compile Include="Models\Report\Category.cs" />
     <Compile Include="Models\Report\Result.cs" />
     <Compile Include="Models\Report\Utils.cs" />
+    <Compile Include="ViewModels\WindowsViewModel\GuideWindowViewModel.cs" />
     <Compile Include="ViewModels\WindowsViewModel\NameCalculationWindowViewModel.cs" />
     <Compile Include="ViewModels\WindowsViewModel\ReportWindowViewModel.cs" />
+    <Compile Include="Views\Windows\GuideWindow.xaml.cs">
+      <DependentUpon>GuideWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\NameCalculationWindow.xaml.cs">
       <DependentUpon>NameCalculationWindow.xaml</DependentUpon>
     </Compile>
@@ -134,6 +138,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Windows\GuideWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -146,7 +154,6 @@
     <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\PagesViewModel\ResultsPageViewModel.cs" />
-    <Compile Include="ViewModels\PagesViewModel\TheoryPageViewModel.cs" />
     <Compile Include="ViewModels\PagesViewModel\СalculationPageViewModel.cs" />
     <Compile Include="ViewModels\WindowsViewModel\MainWindowViewModel.cs" />
     <Compile Include="Views\Pages\ResultsPage.xaml.cs">
@@ -342,6 +349,27 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Result.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Guide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Close.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Menu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\guid_button.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Teoriya.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AddRas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ReporKar.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

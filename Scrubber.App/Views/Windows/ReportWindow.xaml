@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Scrubber.App.ViewModels.WindowsViewModel"
-        mc:Ignorable="d" Icon="/Resources/Report.png"
+        mc:Ignorable="d" Icon="/Resources/Report.png" ResizeMode="NoResize"
         Title="Отчёт" Height="600" Width="800">
 
     <Window.DataContext>

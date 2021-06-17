@@ -23,24 +23,25 @@
     <Window.Background>
         <ImageBrush ImageSource="/Resources/Background.jpg" Stretch="UniformToFill"/>
     </Window.Background>
+    <Border BorderBrush="#FF202022" BorderThickness="3" >
+        <Grid>
 
-    <Grid>
+            <TextBlock Text="Добавить новый расчёт" FontFamily="Times New Roman" FontSize="25" 
+                   HorizontalAlignment="Center" Margin="72,20,71.6,140.6" Foreground="White" Width="250" />
 
-        <TextBlock Text="Добавить новый расчёт" FontFamily="Times New Roman" FontSize="25" 
-                   HorizontalAlignment="Center" Margin="75,20,75,146" Foreground="White" />
+            <TextBlock Text="Введите наименование расчёта" FontFamily="Times New Roman" FontSize="18" 
+                   HorizontalAlignment="Center"  Margin="76,71,79.6,94.6" Foreground="White" />
 
-        <TextBlock Text="Введите наименование расчёта" FontFamily="Times New Roman" FontSize="18" 
-                   HorizontalAlignment="Center"  Margin="79,71,83,108" Foreground="White" />
+            <TextBox Margin="72,99,71.6,66.6" TextWrapping="Wrap" Text="{Binding Name}" Width="250" FontFamily="Times New Roman" FontSize="18"/>
 
-        <TextBox Margin="75,96,75,81" Height="23" TextWrapping="Wrap" Text="{Binding Name}" Width="250" FontFamily="Times New Roman" FontSize="18"/>
+            <StackPanel Orientation="Horizontal" Margin="19,0,20.6,19.6" VerticalAlignment="Bottom">
 
-        <StackPanel Orientation="Horizontal" Margin="20" VerticalAlignment="Bottom">
+                <Button Command="{Binding Сancel}" Margin="50 2" VerticalAlignment="Bottom" Content="Не добавлять" Height="20"   Width="100" FontFamily="Times New Roman" FontSize="14" FontWeight="Bold"/>
 
-            <Button Command="{Binding Сancel}" Margin="50 2" VerticalAlignment="Bottom" Content="Не добавлять" Height="20"   Width="100" FontFamily="Times New Roman" FontSize="14" FontWeight="Bold"/>
-
-            <Button Command="{Binding SetName}" Margin="30 2"  Content="Добавить" Height="20"   Width="75" FontFamily="Times New Roman" FontSize="14" FontWeight="Bold"/>
-        </StackPanel>
+                <Button Command="{Binding SetName}" Margin="30 2"  Content="Добавить" Height="20"   Width="75" FontFamily="Times New Roman" FontSize="14" FontWeight="Bold"/>
+            </StackPanel>
 
 
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

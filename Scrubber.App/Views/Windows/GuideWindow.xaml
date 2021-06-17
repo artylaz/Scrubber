@@ -1,0 +1,111 @@
+﻿<Window x:Class="Scrubber.App.Views.Windows.GuideWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:ico="http://schemas.fontawesome.com/icons/"
+        xmlns:vm="clr-namespace:Scrubber.App.ViewModels.WindowsViewModel"
+        mc:Ignorable="d" Icon="/Resources/Guide.png" 
+        WindowState="Normal" AllowsTransparency="True" 
+        ResizeMode="CanResize" WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" Height="788.2" Width="985.6" >
+
+    <Window.DataContext>
+        <vm:GuideWindowViewModel/>
+    </Window.DataContext>
+
+    <Window.Background>
+        <ImageBrush ImageSource="/Resources/Background.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseLeftButtonDown">
+            <i:InvokeCommandAction Command="{Binding DragMoveCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Border BorderBrush="#FF202022" BorderThickness="3" >
+        <Grid>
+            <Grid  Margin="20 50">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button Command="{Binding CloseCommand}" 
+                        Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="910,-44,-14.4,44">
+                    <Grid>
+                        <Grid.Background>
+                            <SolidColorBrush Color="#FF252526" Opacity="0"/>
+                        </Grid.Background>
+                        <ico:SvgAwesome Icon="Solid_SignOutAlt" Foreground="#FF5BD483" />
+                    </Grid>
+                </Button>
+
+                <Grid Background="#FF012204" Opacity="0.9"/>
+                <ScrollViewer Grid.Row="1" Background="#FFE4E4E4">
+                    <StackPanel>
+                        <TextBlock Text="Руководство пользователя по приложению" HorizontalAlignment="Center" Margin="20"  
+                           FontFamily="Times New Roman" FontSize="30" FontWeight="Bold"/>
+
+                        <TextBlock Text="       1. Меню приложение:" FontFamily="Times New Roman" FontSize="25" FontWeight="Bold"/>
+                        <TextBlock Text=" В меню пользователя представлены три кномки: ''Теория'', ''Расчёт'', ''Результаты''.(Рисунок 1)" 
+                           Margin="65 10 0 10" FontFamily="Times New Roman" FontSize="20" />
+
+                        <Image Source="/Resources/Menu.jpg" Height="211" Width="190"/>
+                        <TextBlock Text=" Рисунок 1 – Меню. " HorizontalAlignment="Center"
+                           TextWrapping="Wrap"  Margin="65 5"  FontFamily="Times New Roman" FontSize="20" FontWeight="Bold"/>
+
+                        <Grid Height="48" Margin="0 10 0 0">
+                            <TextBlock Text="     Также присудствует ''кнопка выйти из приложени''" 
+                           TextWrapping="Wrap"  Margin="65 5"  FontFamily="Times New Roman" FontSize="20"/>
+                            <Image Source="/Resources/Close.jpg" Margin="529,2,367.8,12" />
+                        </Grid>
+
+                        <Grid Height="48">
+                            <TextBlock Text="     И кнопка, отвечающая за показ руководства пользователя" 
+                           TextWrapping="Wrap"  Margin="65 5"  FontFamily="Times New Roman" FontSize="20"/>
+                            <Image Source="/Resources/guid_button.jpg" Margin="590,2,306.8,12" />
+                        </Grid>
+
+
+
+                        <TextBlock Text="       2. Теория:" Margin="0 20 0 0" FontFamily="Times New Roman" FontSize="25" FontWeight="Bold"/>
+
+                        <TextBlock Text="     В блоке ''теория'' представлено руководство по лабораторной работе: информация о скруббере, описание выполнения лабораторной работы и как взаимодействовать с приложением при выполнение работы (Рисунок 2)" 
+                           TextWrapping="Wrap"  Margin="65 15"  FontFamily="Times New Roman" FontSize="20"/>
+
+                        <Image Source="/Resources/Teoriya.jpg" Height="502" Width="795"  />
+                        <TextBlock Text=" Рисунок 2 – Теория по лабораторной. " HorizontalAlignment="Center"
+                           TextWrapping="Wrap"  Margin="65 5"  FontFamily="Times New Roman" FontSize="20" FontWeight="Bold"/>
+
+                        <TextBlock Text="       3. Расчёт:" Margin="0 20 0 0" FontFamily="Times New Roman" FontSize="25" FontWeight="Bold"/>
+                        <TextBlock Text="     В расчете выставляем исходные данные, так же выбираем вид скруббера и пыли, и тип расчёта. (Рисунок 3.1)" 
+                           TextWrapping="Wrap"  Margin="65 15 0 10"  FontFamily="Times New Roman" FontSize="20" Width="836"/>
+
+                        <Image Source="/Resources/Data1.jpg" Height="502" Width="795"  />
+                        <TextBlock Text=" Рисунок 3.1 – Ввод данных и их расчёт. " HorizontalAlignment="Center"
+                           TextWrapping="Wrap"  Margin="65 5"  FontFamily="Times New Roman" FontSize="20" FontWeight="Bold"/>
+                        <TextBlock Text="     Так же в блоке ''расчет'' при взаимодействии с кнопкой ''рассчитать'' можно добавить новый отчет, дав ему название, или же не добавлять новый расчет, но при этом программа рассчитает результат, только не добавить расчет в ''список расчётов''. Программа автоматически переведет в блок ''Результаты''. (Рисунок 3.2)" 
+                           TextWrapping="Wrap"  Margin="65 10 0 20"  FontFamily="Times New Roman" FontSize="20" Width="854"/>
+                        <Image Source="/Resources/AddRas.jpg" Height="217" Width="430"  />
+                        <TextBlock Text=" Рисунок 3.2 – Ввод данных и их расчёт. " HorizontalAlignment="Center"
+                           TextWrapping="Wrap"  Margin="65 5"  FontFamily="Times New Roman" FontSize="20" FontWeight="Bold"/>
+                        <TextBlock Text="       4. Результаты:" Margin="0 20 0 0" FontFamily="Times New Roman" FontSize="25" FontWeight="Bold"/>
+                        <TextBlock Text="     В блоке ''Результаты'' выводятся результаты по расчетам. Также можно увидеть список добавленных расчетов, удалить некоторые из них или удалить все. Кнопка ''отчет'' выводит отчет в отдельном окне. (Рисунок 4.1)" 
+                           TextWrapping="Wrap"  Margin="65 10 0 20"  FontFamily="Times New Roman" FontSize="20" Width="854"/>
+                        <Image Source="/Resources/Result.jpg" Height="502" Width="795"  />
+                        <TextBlock Text=" Рисунок 4.1 – Результаты расчёта. " HorizontalAlignment="Center"
+                           TextWrapping="Wrap"  Margin="65 5"  FontFamily="Times New Roman" FontSize="20" FontWeight="Bold"/>
+
+                        <TextBlock Text="    В отдельном окне, где находится отчет, можно просмотреть его, экспортировать в pdf формат и скачать. (Рисунок 4.2)" 
+                           TextWrapping="Wrap"  Margin="65 20 0 10"  FontFamily="Times New Roman" FontSize="20" Width="854"/>
+                        <Image Source="/Resources/ReporKar.jpg" Height="494" Width="661"  />
+                        <TextBlock Text=" Рисунок 4.2 – Окно отчёта. " HorizontalAlignment="Center"
+                           TextWrapping="Wrap"  Margin="65 5"  FontFamily="Times New Roman" FontSize="20" FontWeight="Bold"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

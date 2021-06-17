@@ -10,7 +10,7 @@
         Height="450" Width="800" Icon="/Resources/Icon.png" 
         WindowState="Normal" AllowsTransparency="True" 
         ResizeMode="CanResize" WindowStartupLocation="CenterScreen" 
-        WindowStyle="None" MinWidth="1200" MinHeight="750">
+        WindowStyle="None" MinWidth="1200" MinHeight="750" >
 
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -25,63 +25,64 @@
             <i:InvokeCommandAction Command="{Binding DragMoveCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
+    <Border BorderBrush="#FF202022" BorderThickness="3" >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+            <Grid  Grid.Column="0" Opacity="0.9">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.6"/>
+                </Grid.Background>
 
-        <Grid  Grid.Column="0" Opacity="0.9">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.Background>
-                <SolidColorBrush Color="Black" Opacity="0.6"/>
-            </Grid.Background>
+                <Grid Grid.Row="0" Height="100" Width="100" Opacity="0.8">
 
-            <Grid Grid.Row="0" Height="100" Width="100" Opacity="0.8">
+                    <Image Source="/Resources/Icon.png"  Width="70" Height="70"/>
+                </Grid>
+                <Border Margin="0 130"  VerticalAlignment="Top" Height="185" Grid.Row="1" Background="#FF162B1D" BorderBrush="#FF202022" BorderThickness="3" >
+                    <StackPanel >
+                        <Button Command="{Binding OpenTheoryPageCommand}" Background="{Binding BackgroundTheory}"  Height="50" Margin="0 10 0 0" Content="Теория" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
+                        <Button Command="{Binding OpenСalculationPageCommand}" Background="{Binding BaackgroundCalculat}"  Height="50" Margin="0 10 0 0" Content="Расчёт" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
+                        <Button Command="{Binding OpenResultsPageCommand}" Background="{Binding BackgroundResults}" Height="50" Margin="0 10 0 0" Content="Результаты" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
 
-                <Image Source="/Resources/Icon.png"  Width="70" Height="70"/>
+                    </StackPanel>
+                </Border>
+                <StackPanel Grid.Row="1" Height="50" VerticalAlignment="Bottom" Margin="0 0 0 20"  Orientation="Horizontal" >
+
+                    <Button Command="{Binding OpenGuideCommadn}" Margin="30 0" Height="29" Width="30" 
+                        Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                        <Grid>
+                            <Grid.Background>
+                                <SolidColorBrush Color="#FF252526" Opacity="0"/>
+                            </Grid.Background>
+                            <ico:SvgAwesome Icon="Solid_Info" Foreground="#FF5BD483"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Command="{Binding CloseAppCommand}"  Height="30" Width="30" 
+                        Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                        <Grid>
+                            <Grid.Background>
+                                <SolidColorBrush Color="#FF252526" Opacity="0"/>
+                            </Grid.Background>
+                            <ico:SvgAwesome Icon="Solid_SignOutAlt" Foreground="#FF5BD483"/>
+                        </Grid>
+                    </Button>
+                </StackPanel>
+
             </Grid>
 
-            <StackPanel Margin="0 150"  VerticalAlignment="Top" Height="185" Grid.Row="1" Background="#FF162B1D">
-                <Button Command="{Binding OpenTheoryPageCommand}" Background="{Binding BackgroundTheory}"  Height="50" Margin="0 10 0 0" Content="Теория" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
-                <Button Command="{Binding OpenСalculationPageCommand}" Background="{Binding BaackgroundCalculat}"  Height="50" Margin="0 10 0 0" Content="Расчёт" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
-                <Button Command="{Binding OpenResultsPageCommand}" Background="{Binding BackgroundResults}" Height="50" Margin="0 10 0 0" Content="Результаты" Style="{StaticResource ButtonMenu }" FontFamily="Times New Roman" FontSize="18"/>
-                
-            </StackPanel>
-
-            <StackPanel Grid.Row="1" Height="50" VerticalAlignment="Bottom" Margin="0 0 0 20"  Orientation="Horizontal" >
-
-                <Button Margin="30 0" Height="29" Width="30" 
-                        Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
-                    <Grid>
-                        <Grid.Background>
-                            <SolidColorBrush Color="#FF252526" Opacity="0"/>
-                        </Grid.Background>
-                        <ico:SvgAwesome Icon="Solid_Info" Foreground="#FF5BD483"/>
-                    </Grid>
-                </Button>
-
-                <Button Command="{Binding CloseAppCommand}"  Height="30" Width="30" 
-                        Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
-                    <Grid>
-                        <Grid.Background>
-                            <SolidColorBrush Color="#FF252526" Opacity="0"/>
-                        </Grid.Background>
-                        <ico:SvgAwesome Icon="Solid_SignOutAlt" Foreground="#FF5BD483"/>
-                    </Grid>
-                </Button>
-            </StackPanel>
-
-        </Grid>
-
-        <Frame 
+            <Frame 
             Grid.Column="1" 
             Content="{Binding CurrentPage}"
             NavigationUIVisibility="Hidden"/>
 
-    </Grid>
+        </Grid>
+    </Border>
 </Window>
